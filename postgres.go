@@ -21,7 +21,7 @@ func readDatabaseData() ([]map[string]interface{}, error) {
 	}
 	defer db.Close()
 
-	rows, err := db.Queryx(fmt.Sprintf("SELECT %s FROM %s LIMIT 10", databaseColumns, databaseTable))
+	rows, err := db.Queryx(fmt.Sprintf("SELECT %s FROM %s LIMIT 10 OFFSET 1000", databaseColumns, databaseTable))
 
 	if err == sql.ErrNoRows {
 		return nil, nil

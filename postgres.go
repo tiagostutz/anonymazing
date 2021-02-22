@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq" // using PostgreSQL impl
@@ -21,7 +22,12 @@ func readDatabaseData() ([]map[string]interface{}, error) {
 	}
 	defer db.Close()
 
-	rows, err := db.Queryx(fmt.Sprintf("SELECT %s FROM %s LIMIT 10 OFFSET 1000", databaseColumns, databaseTable))
+	whereNotEmpty := "1=1 "
+	columns := strings.Split(databaseColumns, ",")
+	for _, cl := range columns {
+		whereNotEmpty += fmt.Sprintf("AND %s <> '' ", cl)
+	}
+	rows, err := db.Queryx(fmt.Sprintf("SELECT %s FROM %s WHERE %s ORDER BY %s ASC", databaseColumns, databaseTable, whereNotEmpty, databaseColumns))
 
 	if err == sql.ErrNoRows {
 		return nil, nil

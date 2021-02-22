@@ -4,7 +4,7 @@ Deadly simple SQL generation based data anonymization command-line utility
 
 For example, given the following data on a Postgres table:
 
-```md
+
 | Name                          | Email                       |
 | ----------------------------- | --------------------------- |
 | Abner Fiorelli Lyara          | alan.hickle@ies.com.br      |
@@ -17,7 +17,7 @@ For example, given the following data on a Postgres table:
 | Acácia Mickaelle Maboni       | paolo.parisian@ies.com.br   |
 | Acácia Rogéria                | gavin.beahan@ies.com.br     |
 | Acácia Vasco Panuce Fraporti  | bennie.medhurst@ies.com.br  |
-```
+
 
 ```sh
 $ ./anonymazing --postgres-connection-string=postgresql://postgres:123456@localhost:5432/my_database?sslmode=disable --database-table=pessoa --database-columns=name,email --output=./anonymizer_script.sql

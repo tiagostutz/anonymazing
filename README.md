@@ -18,10 +18,13 @@ For example, given the following data on a Postgres table:
 | Acácia Rogéria                | gavin.beahan@ies.com.br     |
 | Acácia Vasco Panuce Fraporti  | bennie.medhurst@ies.com.br  |
 
+After running:
 
 ```sh
 $ ./anonymazing --postgres-connection-string=postgresql://postgres:123456@localhost:5432/my_database?sslmode=disable --database-table=pessoa --database-columns=name,email --output=./anonymizer_script.sql
 ```
+
+The following SQL will be generated at the `anonymizer_script.sql` file.
 
 ```sql
 UPDATE pessoa SET nome='Tandara Padilha' WHERE nome='Abner Fiorelli Lyara';

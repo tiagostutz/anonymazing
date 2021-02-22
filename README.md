@@ -2,6 +2,9 @@
 
 Deadly simple SQL generation based data anonymization command-line utility
 
+
+## Overview
+
 For example, given the following data on a Postgres table:
 
 
@@ -46,4 +49,10 @@ UPDATE pessoa SET email='aron.o"conner@ies.com.br' WHERE email='paolo.parisian@i
 UPDATE pessoa SET nome='Kelcia Psico2 Arroyane' WHERE nome='Acácia Rogéria';
 UPDATE pessoa SET email='vaughn.morissette@ies.com.br' WHERE email='gavin.beahan@ies.com.br';
 UPDATE pessoa SET nome='Yanca Sartori' WHERE nome='Acácia Vasco Panuce Fraporti';
+```
+
+## Building
+Just as simples as:
+```
+go build .
 ```
